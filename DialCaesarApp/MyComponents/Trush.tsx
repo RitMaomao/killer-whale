@@ -54,7 +54,6 @@
 
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { ThemedView } from '../components/ThemedView'
 import { Keyframe } from 'react-native-reanimated';
 import { Icon } from '@rneui/themed';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -62,24 +61,30 @@ interface ButtonsComponentProps {
   onPress: () => void;
 }
 
-const ButtonComponent: React.FC<ButtonsComponentProps> = ({ onPress }) => {
+const Trush: React.FC<ButtonsComponentProps> = ({ onPress }) => {
   return (
-    <TouchableOpacity
-      style={styles.btnHover}
-      activeOpacity={0.7} // タップ時の透明度を設定
-      onPress={onPress}
-    >
-      <LinearGradient
-        colors={['#39FEE9', '#486FFF']} // グラデーションの色
-        start={{ x: 0, y: 0 }} // 開始位置
-        end={{ x: 1, y: 1 }}   // 終了位置
+
+    <View style={styles.buttons}>
+      <TouchableOpacity
         style={styles.btnHover}
+        activeOpacity={0.7} // タップ時の透明度を設定
+        onPress={onPress}
       >
-        {/* <View style={styles.buttons}> */}
-        <Text style={styles.btnText}>Encode Button</Text>
-        {/* </View> */}
-      </LinearGradient>
-    </TouchableOpacity>
+        <LinearGradient
+          colors={['#FF9CD4', '#FF4E66']} // グラデーションの色
+          start={{ x: 0, y: 0 }} // 開始位置
+          end={{ x: 1, y: 1 }}   // 終了位置
+          style={styles.btnHover}
+        >
+          <Icon
+            name="trash" // 使用するアイコンの名前
+            type="font-awesome" // アイコンの種類（FontAwesomeなど）
+            color="#FFF"
+            size={24} // アイコンのサイズ
+          />
+        </LinearGradient>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -87,17 +92,18 @@ const styles = StyleSheet.create({
   buttons: {
     margin: 0,
     textAlign: 'center', // これはRNでは無効。親Viewで調整する必要あり
-    borderRightWidth: 5,
+    //borderRightWidth: 5,
+    marginTop: 10,
   },
   btnHover: {
     width: 150,
     height: 40,
     //backgroundColor: '#39FEEA', // 緑色
-    backgroundColor: '#FBDD9D', // 橙色
+    //backgroundColor: '#FBDD9D', // 橙色
     margin: 0,
     borderRadius: 15,
-    // shadowOpacity: 0.5,
-    // shadowColor: '#CA4',
+    shadowOpacity: 0.5,
+    //shadowColor: '#CA4',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -105,10 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontStyle: 'italic',
     fontWeight: '700',
-    color: '#FFF',
+    //color: '#A86',
     textAlign: 'center',
   },
 
 });
 
-export default ButtonComponent;
+export default Trush;
